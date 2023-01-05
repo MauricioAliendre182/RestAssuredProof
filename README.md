@@ -1,2 +1,2 @@
 # RestAssuredProof
-This is RestAssured prrof with https://test-api.k6.io/ API
+This is RestAssured proof with https://test-api.k6.io/ API
