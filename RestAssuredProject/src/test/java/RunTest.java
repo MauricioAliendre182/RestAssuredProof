@@ -15,4 +15,3 @@ public class RunTest {
         customer.customerList();
     }
 }
-// @Test is JUnit annotation to define test method

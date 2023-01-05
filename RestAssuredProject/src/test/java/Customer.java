@@ -23,7 +23,6 @@ public class Customer {
             e.printStackTrace();
         }
     }
-    public String cookie;
     public String token;
     public String username;
     public String password;
@@ -66,8 +65,8 @@ public class Customer {
 
         JsonPath response = res.jsonPath();
         assertEquals(response.get("[0].id").toString(),"12223871");
-        System.out.println(res.asString());
-        System.out.println(res.statusCode());
+        System.out.println("Status Code: " + res.statusCode());
+        System.out.println("Body: " + res.asString());
     }
 
 }
