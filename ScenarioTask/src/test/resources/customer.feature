@@ -8,3 +8,8 @@ Feature: Login with a user
       |username       |password                    |
       |Mauricio44     |APITestingProofMauricio     |
       |LosJucumaris123|LosJucumarisJalaUniversity34|
+    
+  Scenario: Get the list of crocodiles
+    Given The user needs a token to get the list
+    When Get the crocodile list
+    Then the API should allow the user to see the crocodile list

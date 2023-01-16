@@ -33,10 +33,4 @@ public class RunTest {
     public void writeToken() throws ConfigurationException, IOException {
         customer.writeTokenInProperties(response);
     }
-
-//    @Test
-//    public void customerList() throws IOException {
-//        Customer customer=new Customer();
-//        customer.customerList();
-//    }
 }

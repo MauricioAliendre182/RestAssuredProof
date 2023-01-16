@@ -64,21 +64,26 @@ public class Customer {
         token = jsonpath.get("access");
         Utils.setEnvVariableToken(token);
     }
-    public void customerList() throws IOException {
+
+    public RequestSpecification sendToken() throws IOException {
         prop.load(file);
         RestAssured.baseURI  = prop.getProperty("baseUrl");
-        Response res =
-                (Response) given()
-                        .contentType("application/json").header("Authorization","Bearer " + prop.getProperty("Token")).
-                        when()
-                        .get("/my/crocodiles/").
-                        then()
-                        .assertThat().statusCode( 200 ).extract().response();
+        RequestSpecification res = given().contentType("application/json").header("Authorization","Bearer " + prop.getProperty("Token"));
+        return res;
+    }
 
-        JsonPath response = res.jsonPath();
-        assertEquals(response.get("[0].id").toString(),"12223871");
-        System.out.println("Status Code: " + res.statusCode());
-        System.out.println("Body: " + res.asString());
+    public Response getCrocodilesList(RequestSpecification res) throws IOException {
+        prop.load(file);
+        RestAssured.baseURI  = prop.getProperty("baseUrl");
+        Response response = res.when().get("/my/crocodiles/");
+        return response;
+    }
+
+    public Response statusCodeCrocodile(Response response) throws IOException {
+        prop.load(file);
+        RestAssured.baseURI  = prop.getProperty("baseUrl");
+        Response responseFinal = response.then().assertThat().statusCode( 200 ).extract().response();
+        return responseFinal;
     }
 
 }
